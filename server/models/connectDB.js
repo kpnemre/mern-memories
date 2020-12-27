@@ -5,8 +5,8 @@ const mongoose = require("mongoose");
 const connectDB = async()=>{
 // promise dönecek.
 try {
+    mongoose.Promise = global.Promise;
     console.log(process.env.MONGODB_URI)
-    // 'mongodb+srv://dbUser:emre@cluster0.1u7ik.mongodb.net/TestDatabase'
        await mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true}) 
        console.log("succesfully connect to DB")
    } catch (error) {
@@ -14,5 +14,6 @@ try {
    }
    mongoose.set('useFindAndModify', false);
 }
+
 
 module.exports= connectDB;
