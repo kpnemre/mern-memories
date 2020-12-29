@@ -3,11 +3,11 @@ import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
 import useStyles from './styles';
-import {createPost} from '../../actions/posts'
+import {createPost, updatePost} from '../../actions/posts'
 
 
 
-const Form = () => {
+const Form = ({currentId, setCurrentId}) => {
   const [postData, setPostData] = useState({
     title: "",
     message: "",
@@ -16,13 +16,38 @@ const Form = () => {
   });
   const classes = useStyles();
   const dispatch = useDispatch();
+  // const posts = useSelector(state => state.posts)
+  const post = useSelector(state => currentId ? state.posts.find((p)=>p._id===currentId):null)
+  // console.log("post",post)
+
+useEffect(() => {
+if(post){
+  setPostData(post)
+}
+}, [post])
+
 
   const handleSubmit = (e)=>{
       e.preventDefault();
-      dispatch(createPost(postData))
+
+      if(currentId){
+
+        dispatch(updatePost(currentId,postData))
+        // console.log(currentId)
+      }else{
+
+        dispatch(createPost(postData))
+      }
+      clear();
   }
   const clear =()=>{
-      return null;
+     setCurrentId=null;
+     setPostData({
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
+    });
   }
   return (
     <Paper className={classes.paper}>
@@ -34,7 +59,7 @@ const Form = () => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">
-          {/* {currentId ? `Editing "${post.title}"` : "Creating a Memory"} */}
+          {currentId ? `Editing "${post.title}"` : "Creating a Memory"}
         </Typography>
         <TextField
           name="title"

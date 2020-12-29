@@ -3,15 +3,15 @@ const express = require("express");
 require("dotenv").config();
 const app = express();
 // var path = require('path');
-// var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 var logger = require('morgan');
 
 const connectDB = require("./models/connectDB.js");
 connectDB();
 const cors = require('cors');
 
-// app.use(bodyParser.json({ limit: '30mb', extended: true }))
-// app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
+app.use(bodyParser.json({ limit: '30mb', extended: true }))
+app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
