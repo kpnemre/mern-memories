@@ -8,16 +8,16 @@ import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
 import useStyles from './styles';
 import { useDispatch} from 'react-redux'
-import {getPosts} from './actions/posts'
+import { getPosts } from './actions/posts';
 
 
 
-function App() {
+const App=()=> {
   const classes= useStyles();
 const dispatch = useDispatch()
 
 useEffect(() => {
-dispatch(getPosts);
+dispatch(getPosts());
 }, [dispatch])
   return (
     // <Provider store = {store}>

@@ -1,4 +1,4 @@
-import * as api from '../api';
+import * as api from '../api/index';
 
 // * as api means =api.fetchPosts
 
@@ -11,7 +11,7 @@ export const getPosts = () =>async (dispatch)=>{
         dispatch({type:"FETCH_ALL",payload:data});
         console.log("data", data)
     } catch (error) {
-        console.log(error)
+        console.log(error.message)
     }
 
     // const action ={type:"FETCH_ALL",payload:[]}

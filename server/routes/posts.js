@@ -1,9 +1,12 @@
 const express = require("express");
 
 const router = express.Router();
-const{ getPosts, createPosts} = require("../controllers/posts");
+const{ getPost, createPost, updatePost} = require("../controllers/posts");
 
-router.get('/',getPosts);
-router.get('/',createPosts);
+router.get('/',getPost);
+router.post('/',createPost);
+// router.patch'/:id',updatePost);
+
+
 
 module.exports=router
