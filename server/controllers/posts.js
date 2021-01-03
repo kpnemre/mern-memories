@@ -18,17 +18,14 @@ exports.getPost = async (req,res) =>{
         res.status(400).json({message:error.message})
     }
 }
-
 exports.createPost = async (req, res) => {
-
     const { title, message, selectedFile, creator, tags } = req.body;
- 
+
     const newPostMessage = new PostMessage({ title, message, selectedFile, creator, tags })
 
     try {
-        const userData = await PostMessage.findOne({ title });
-        checkFunction(res, userData, "User already exists!!");
         await newPostMessage.save();
+        // console.log(newPostMessage.selectedFile)
 
         res.status(201).json(newPostMessage );
     } catch (error) {
@@ -47,6 +44,7 @@ exports.updatePost = async (req,res) =>{
         // }
         const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
         await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
+        console.log(updatedPost)
         res.status(200).json(updatedPost)
     } catch (error) {
         res.status(400).json({message:error.message})

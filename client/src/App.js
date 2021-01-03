@@ -19,7 +19,7 @@ const [currentId, setCurrentId] = useState(null);
 
 useEffect(() => {
 dispatch(getPosts());
-console.log("dispatch", dispatch)
+// console.log("dispatch", dispatch)
 }, [currentId,dispatch])
   return (
     // <Provider store = {store}>

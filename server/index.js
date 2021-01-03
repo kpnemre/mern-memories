@@ -6,8 +6,7 @@ const app = express();
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 
-const connectDB = require("./models/connectDB.js");
-connectDB();
+
 const cors = require('cors');
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
@@ -16,7 +15,8 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 // app.use(express.urlencoded({ extended: false }));
-
+const connectDB = require("./models/connectDB.js");
+connectDB();
 
 
 

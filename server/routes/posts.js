@@ -12,4 +12,4 @@ router.patch('/:id/likePost',likePost);
 
 
 
-module.exports=router
+module.exports=router;

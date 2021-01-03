@@ -14,7 +14,10 @@ export const fetchPosts = () => axios.get(url);
 // }
 // }
 
-export const createPost = (newPost)=>axios.post(url,newPost);
+export const createPost = (newPost)=>{
+    axios.post(url,newPost)
+    console.log("newpost", newPost)
+};
 export const updatePost = (id, updatedPost)=>{
     console.log(id,updatedPost)
     axios.patch(`${url}/${id}`,updatedPost)
