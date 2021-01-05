@@ -8,4 +8,4 @@ const checkFunction = (res, variable, message, code = 400) => {
     }
 }
 
-module.exports = checkFunction;
+export default checkFunction;

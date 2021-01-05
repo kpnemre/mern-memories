@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose';
 // mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true, useUnifiedTopology: true});
 
 // BAĞLANIP bağlanmadığının kontrolü
-const connectDB = async()=>{
+export const connectDB = async()=>{
 // promise dönecek.
 try {
     mongoose.Promise = global.Promise;
@@ -21,4 +21,4 @@ try {
 }
 
 
-module.exports= connectDB;
+// export default connectDB;
