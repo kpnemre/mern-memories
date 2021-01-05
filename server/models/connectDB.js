@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 // mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true, useUnifiedTopology: true});
 
 // BAĞLANIP bağlanmadığının kontrolü
-export const connectDB = async()=>{
+ const connectDB = async()=>{
 // promise dönecek.
 try {
     mongoose.Promise = global.Promise;
@@ -21,4 +21,4 @@ try {
 }
 
 
-// export default connectDB;
+export default connectDB;
