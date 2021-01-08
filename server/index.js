@@ -2,7 +2,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import mongoose from 'mongoose';
+import logger from 'morgan';
 import  connectDB from './models/connectDB.js'
 import postRoutes from './routes/posts.js';
 import dotenv from 'dotenv';
@@ -12,6 +12,7 @@ const app = express();
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
+app.use(logger('dev'));
 
 app.use('/posts', postRoutes);
 
